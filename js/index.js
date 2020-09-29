@@ -85,7 +85,18 @@ headerP.appendChild(promptButton)
 
 // * `scroll`
 
+window.addEventListener('scroll', () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight
+    const scrolled = window.scrollY
 
+    if (Math.ceil(scrolled) === scrollable) {
+        const bottomMessage = document.createElement('h2')
+        bottomMessage.textContent = 'Congrats! You reached the bottom of the page!'
+        bottomMessage.style.background = 'pink'
+        bottomMessage.style.textAlign = 'center'
+        document.body.appendChild(bottomMessage)
+    }
+})
 
 // * `select`
 // * `dblclick`
