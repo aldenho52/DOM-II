@@ -11,7 +11,7 @@ navLinks.forEach ( link => {
     })
 })
 
-// * `keydown`
+// * `keydown` and 'keyup'
 const headerP = document.querySelector('header p')
 window.addEventListener('keydown', (event) => {
     if (event.key === "f") {
@@ -37,12 +37,56 @@ headerP.appendChild(keydownInstructions)
 
 // * `wheel`
 
-
+function zoom(event) {
+    event.preventDefault();
+  
+    scale += event.deltaY * -0.01;
+  
+    // Restrict scale
+    scale = Math.min(Math.max(.125, scale), 4);
+  
+    // Apply scale transform
+    mainImg.style.transform = `scale(${scale})`;
+  }
+  
+  let scale = 1;
+  const mainImg = document.querySelector('img');
+  mainImg.onwheel = zoom;
 
 // * `load`
+
+window.addEventListener('load', event => {
+    // alert('BOOM! Welcome to the FUN BUS!')  
+})
+
 // * `focus`
-// * `resize`
+
+const promptText = document.createElement('input')
+promptText.textContent = ''
+headerP.appendChild(promptText)
+
+promptText.addEventListener('focus', (event) => {
+    event.target.style.background = 'pink'
+})
+
+const promptButton = document.createElement('button')
+promptButton.textContent = 'Push to see what happens'
+promptButton.style.marginLeft = '10px'
+headerP.appendChild(promptButton)
+
+// function prompt (e) {
+//     e.textContent = e.target.value
+//     prompt(`${promptText}`)
+//     promptText.textContent = ''
+//     // promptText.focus()
+// }
+
+// promptButton.addEventListener('click', (prompt))
+
 // * `scroll`
+
+
+
 // * `select`
 // * `dblclick`
 // * `drag / drop`
