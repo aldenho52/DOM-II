@@ -74,14 +74,6 @@ promptButton.textContent = 'Push to see what happens'
 promptButton.style.marginLeft = '10px'
 headerP.appendChild(promptButton)
 
-// function prompt (e) {
-//     e.textContent = e.target.value
-//     prompt(`${promptText}`)
-//     promptText.textContent = ''
-//     // promptText.focus()
-// }
-
-// promptButton.addEventListener('click', (prompt))
 
 // * `scroll`
 
@@ -98,6 +90,30 @@ window.addEventListener('scroll', () => {
     }
 })
 
-// * `select`
 // * `dblclick`
-// * `drag / drop`
+
+const h2 = document.querySelectorAll('h2')
+h2.forEach ( (item) => {
+    item.addEventListener('dblclick', function () {
+        item.style.background = 'red'
+        item.style.color = 'white'
+    })
+})
+
+// mouseenter, mouseleave
+
+const contentP = document.querySelector('.content-section')
+
+contentP.addEventListener('mouseenter', event => {
+    contentP.style.background = 'lightgreen'
+})
+contentP.addEventListener('mouseleave', event => {
+    contentP.style.background = 'white'
+})
+
+const contentP2 = document.querySelector('.inverse-content')
+
+contentP2.addEventListener('contextmenu', (event) => {
+    contentP2.style.background = 'yellow'
+})
+
