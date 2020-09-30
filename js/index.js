@@ -117,3 +117,36 @@ contentP2.addEventListener('contextmenu', (event) => {
     contentP2.style.background = 'yellow'
 })
 
+// prevent default
+
+navLinks.forEach ( link => {
+    link.addEventListener('click', event => {
+        event.preventDefault()
+    })
+})
+
+// stop Propagation
+
+const stopProp1 = document.querySelector('.btn')
+stopProp1.addEventListener('click', event => {
+    console.log(`You clicked on the sign up button!`)
+    event.stopPropagation()
+})
+
+const stopProp2 = document.querySelector('footer')
+stopProp2.addEventListener('click', event => {
+    console.log(`You clicked on the footer button!`)
+    event.stopPropagation()
+})
+
+
+Array.from(document.all).forEach(elem => {
+    elem.addEventListener('click', event => {
+    console.log(`
+    event type: ${event.type}
+    event target: ${event.target.nodeName}
+    current target: ${event.currentTarget.nodeName}
+    timestamp: ${Math.floor(event.timeStamp/1000)}
+    `)
+    }) 
+})
